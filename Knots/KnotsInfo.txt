@@ -1,0 +1,117 @@
+Knots by Robert Rayment   March 2002
+
+1. KNOT FILES
+2. LISTBOX
+3. DRAWING
+4. INCLUDED FILES
+5. KNOT ELEMENTS
+6. KNOT INFO
+7. COLORED CURSOR
+
+1. KNOT FILES
+
+Knot files have an extension *.knt
+Layout:-
+
+Number of knots
+KnotName1
+Number of ropes in knot
+Number of points in rope 1
+x,y,z
+x,y,z
+,,,,
+[Number of points in rope 2]
+[x,y,z]
+[x,y,z]
+[,,,,,]
+KnotName2
+etc
+
+x & y are pixel coords
+z is 0 or 1  ' 0 overdraws until a 1 when it underdraws
+
+On the display, after 'Make a knot', 
+0 shows as the letter o and 1 as u.
+
+2. LISTBOX
+
+After 'Load knots' the names appear in the listbox.
+LButton draws the shape, Crtl+LButton deletes that shape
+from the list. The speed of drawing is controlled by calling
+the Sub Delayer N, where N determines the delay. I've set 
+underdraw slower than overdraw, but you can easily change 
+this if you want to.
+
+3. DRAWING
+
+After 'Make a knot' instructions are given in a side form.
+Apart from simple knots it's worth sketching out the knot
+on a piece of paper, noting where crossings occur, particularly
+a u.  One or two ropes can be used.  If two ropes are used do
+the first rope then 'Add rope to list' then do the second rope
+and 'Add knot to list'.  
+
+4. INCLUDED FILES
+
+Only RRHand.cur needs to be included along with the program
+files. This is the colored cursor file. KNOTS.knt and Hello.knt
+have been included as examples.  All the knots were drawn with
+this program.
+
+5. KNOT ELEMENTS
+
+The knot elements and colors are set up in Sub SetKnotElements
+in knots.bas.  The element is a 9 x 9 array where 0 is no draw
+and 1 - 4 represent 4 shaded colors, yellow for rope 1 and
+green for rope 2.  Other colors and shapes can easily be tried
+by altering the array and colors.  Note that the element is
+rotated as the direction of drawing changes.
+
+6. KNOT INFO
+
+If you are interested in knots look at the following web site:
+<www.realknots.com/knots/index.html>
+
+7. COLORED CURSOR
+
+The cursor was made using my prog BRRIC on PSC.  But any cursor
+drawing program will do.  
+
+a) Load in the cursor from a file:-
+
+    FilCurHandle = LoadCursorFromFile(PathSpec$ & "RRHand.cur")
+
+  and on exit from the program clear resource:-
+
+    DestroyCursor FilCurHandle
+
+b) Set colored cursor for PIC Picbox:-
+
+    PICCurHandle = SetClassLong(object.hwnd, GCL_HCURSOR, FilCurHandle)
+    
+  where in this program object is PIC
+    
+c) When the cursor is finished with, reset default:-
+
+    SetClassLong object.hwnd, GCL_HCURSOR, PICCurHandle
+
+  where in this program object is Form1.PIC
+
+  FilCurHandle & PICCurHandle are Public Longs and the API's
+  are shown in knots.bas.
+    
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

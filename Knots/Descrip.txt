@@ -1,0 +1,12 @@
+Knots by Robert Rayment.  Load knots, Save knots (*.knt files), Make a knot (colored cursor, + hairs, grid).  Examples KNOTS.knt (20 knots drawn using this prog) & Hello.knt included.  See also KnotsInfo.txt.  Zip 21KB, Win98.
+
+
+
+
+
+
+
+
+
+
+
